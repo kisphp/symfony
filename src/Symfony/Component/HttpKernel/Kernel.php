@@ -498,8 +498,6 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
             $this->bundles[$name] = $bundle;
 
             if ($parentName = $bundle->getParent()) {
-                @trigger_error('Bundle inheritance is deprecated as of 3.4 and will be removed in 4.0.', \E_USER_DEPRECATED);
-
                 if (isset($directChildren[$parentName])) {
                     throw new \LogicException(sprintf('Bundle "%s" is directly extended by two bundles "%s" and "%s".', $parentName, $name, $directChildren[$parentName]));
                 }
